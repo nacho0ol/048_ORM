@@ -67,6 +67,7 @@ app.get("/Komik", async (req, res) => {
     res.send(err);
   }
 });
+
 app.put("/Komik/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body;
@@ -78,6 +79,21 @@ app.put("/Komik/:id", async (req, res) => {
     }
     await Komik.update(data);
     res.send({ message: "Komik updated successfully", Komik });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.delete("/Komik/:id", async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const Komik = await db.Komik.findByPk(id);
+    if (!Komik) {
+      return res.status(404).send("Komik not found");
+    }
+    await Komik.destroy();
+    res.send({ message: "Komik deleted successfully" });
   } catch (err) {
     res.status(500).send(err);
   }
