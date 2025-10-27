@@ -9,6 +9,7 @@
    <img width="1920" height="1080" alt="Screenshot (127)" src="https://github.com/user-attachments/assets/45d7f141-e9e5-454d-a8f0-0efca31127cb" />
 
 4. DELETE
-<img width="1920" height="1080" alt="Screenshot (128)" src="https://github.com/user-attachments/assets/a507668b-2104-4ab8-a63d-e1224776627c" />
+<img width="1920" height="1080" alt="Screenshot (128)" src="https://github.com/user-attachments/assets/94c1b132-3995-4494-b388-06a4334aaef5" />
+
 
    
