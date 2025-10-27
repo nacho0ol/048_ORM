@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const PORT = 3000;
 const db = require("./models");
 app.use(express.json());
 app.use(
@@ -9,6 +9,14 @@ app.use(
   })
 );
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("Server started on port 3000");
+});
+
+db.sequelize(PORT, () => {
+  app.listen(PORT, () => {
+    console.log("Server started");
+  });
+}).catch((err) => {
+  console.log(err);
 });
