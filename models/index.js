@@ -49,7 +49,7 @@ db.Sequelize = Sequelize;
 
 module.exports = db;
 
-appendFile.post("/Komik", async (req, res) => {
+app.post("/Komik", async (req, res) => {
   const data = req.body;
   try {
     const Komik = await db.Komik.create(data);
@@ -59,11 +59,26 @@ appendFile.post("/Komik", async (req, res) => {
   }
 });
 
-appendFile.get("/Komik", async (req, res) => {
+app.get("/Komik", async (req, res) => {
   try {
     const Komiks = await db.Komik.findAll();
     res.send(Komiks);
   } catch (err) {
     res.send(err);
+  }
+});
+app.put("/Komik/:id", async (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+
+  try {
+    const Komik = await db.Komik.findByPk(id);
+    if (!Komik) {
+      return res.status(404).send("Komik not found");
+    }
+    await Komik.update(data);
+    res.send({ message: "Komik updated successfully", Komik });
+  } catch (err) {
+    res.status(500).send(err);
   }
 });
