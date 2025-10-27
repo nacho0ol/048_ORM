@@ -13,10 +13,13 @@ app.listen(PORT, () => {
   console.log("Server started on port 3000");
 });
 
-db.sequelize(PORT, () => {
-  app.listen(PORT, () => {
-    console.log("Server started");
+db.sequelize
+  .sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("Server started");
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-}).catch((err) => {
-  console.log(err);
-});
