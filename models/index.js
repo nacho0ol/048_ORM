@@ -52,8 +52,17 @@ module.exports = db;
 appendFile.post("/Komik", async (req, res) => {
   const data = req.body;
   try {
-    const komik = await db.Komik.create(data);
-    res.send(komik);
+    const Komik = await db.Komik.create(data);
+    res.send(Komik);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+appendFile.get("/Komik", async (req, res) => {
+  try {
+    const Komiks = await db.Komik.findAll();
+    res.send(Komiks);
   } catch (err) {
     res.send(err);
   }
